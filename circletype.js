@@ -9,7 +9,8 @@ $.fn.circleType = function(options) {
 
     var settings = {
         dir: 1,
-        position: 'relative'
+        position: 'relative',
+        callback: null
     };
     if (typeof($.fn.lettering) !== 'function') {
         console.log('Lettering.js is required');
@@ -108,6 +109,10 @@ $.fn.circleType = function(options) {
                 }
             }    
             updateHeight();
+            
+            if(typeof settings.callback == 'function'){
+              settings.callback.call(this);
+            }
         };
         
         var getBounds = function (elem) {
@@ -149,7 +154,3 @@ $.fn.circleType = function(options) {
         }
     });
 };
-
-
-
-
